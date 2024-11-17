@@ -9,7 +9,7 @@
     /* Module Resolution */
     "esModuleInterop": true,                         /* Enable ES6 module interoperability for CommonJS. */
     "resolveJsonModule": true,                       /* Allow importing JSON files. */
-     "types": [],                    /* Include Node.js and Express type definitions. */
+     "types": ["node"],                    /* Include Node.js and Express type definitions. */
      "typeRoots": [
       "./node_modules/@types",
       "./src/types"],
