@@ -23,7 +23,7 @@ router.get("/test-mysql", testMySQLConnection);
 
 // Order routes
 router.post("/new-order", addEvent as RequestHandler);
-router.get("/customer/:email", customerController.getCustomerByMobile);
+router.get("/customer/:mobileNumber", customerController.getCustomerByMobile);
 
 // Segment routes
 router.post(
