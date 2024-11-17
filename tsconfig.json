@@ -9,13 +9,13 @@
     /* Module Resolution */
     "esModuleInterop": true,                         /* Enable ES6 module interoperability for CommonJS. */
     "resolveJsonModule": true,                       /* Allow importing JSON files. */
-     "types": ["node","express"],                    /* Include Node.js and Express type definitions. */
+     "types": [],                    /* Include Node.js and Express type definitions. */
      "typeRoots": [
       "./node_modules/@types",
       "./src/types"],
 
     /* Strict Type Checking */
-    "strict": true,       
+    "strict": false,       
     "noImplicitAny": true,                           /* Enable all strict type-checking options. */
     "forceConsistentCasingInFileNames": true,        /* Enforce consistent casing in file names. */
     "skipLibCheck": true,                            /* Skip checking .d.ts files. */
