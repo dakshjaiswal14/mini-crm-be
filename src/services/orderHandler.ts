@@ -6,23 +6,29 @@ interface CustomerDetails {
   id: number;
   email: string;
   name: string;
+  mobile_number: bigint;
   total_spending?: number;
   last_visit?: string;
   visit_count?: number;
 }
 
 // Function to insert a new customer
-const insertCustomer = async (customerEmail: string, customerName: string) => {
+const insertCustomer = async (
+  customerEmail: string,
+  customerName: string,
+  mobileNumber: bigint
+) => {
   const connection = await getMySQLConnection();
 
   try {
     const query = `
-      INSERT INTO customers (email, name)
-      VALUES (?, ?)
+      INSERT INTO customers (email, name,mobile_number)
+      VALUES (?, ?, ?)
     `;
     const [result] = await connection.execute(query, [
       customerEmail,
       customerName,
+      mobileNumber,
     ]);
 
     const insertId = (result as any).insertId; // Access insertId
@@ -41,6 +47,7 @@ export const insertOrder = async (
   customerId: number,
   customerEmail: string,
   customerName: string,
+  mobileNumber: bigint,
   purchaseAmount: number,
   purchaseDate?: string
 ) => {
@@ -50,7 +57,11 @@ export const insertOrder = async (
     // Check if customerId is 0, indicating a new customer
     if (customerId === 0) {
       // Insert the new customer
-      customerId = await insertCustomer(customerEmail, customerName);
+      customerId = await insertCustomer(
+        customerEmail,
+        customerName,
+        mobileNumber
+      );
     }
 
     // Now insert the order
@@ -91,18 +102,18 @@ export const insertOrder = async (
   }
 };
 
-export const findCustomerByEmail = async (
-  customerEmail: string
+export const findCustomerByMobile = async (
+  customerMobile: bigint
 ): Promise<CustomerDetails | null> => {
   const connection = await getMySQLConnection();
 
   try {
     const query = `
-      SELECT * FROM customers WHERE email = ?
+      SELECT * FROM customers WHERE mobile_number = ?
     `;
     // Use the correct typing for rows
     const [rows] = await connection.execute<RowDataPacket[]>(query, [
-      customerEmail,
+      customerMobile,
     ]);
 
     if (rows.length > 0) {

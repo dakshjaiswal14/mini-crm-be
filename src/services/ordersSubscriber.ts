@@ -30,6 +30,7 @@ import { insertOrder } from "./orderHandler";
         customerId,
         customerName,
         customerEmail,
+        mobileNumber,
         purchaseAmount,
         purchaseDate,
       } = orderData;
@@ -39,6 +40,7 @@ import { insertOrder } from "./orderHandler";
         customerId,
         customerName,
         customerEmail,
+        mobileNumber,
         purchaseAmount,
         purchaseDate
       );

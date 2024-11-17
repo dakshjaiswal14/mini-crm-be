@@ -1,6 +1,6 @@
 import redis from "../config/redisClient";
 import { Request, Response } from "express";
-import { findCustomerByEmail } from "../services/orderHandler";
+import { findCustomerByMobile } from "../services/orderHandler";
 
 // Controller function to add a new event
 export const addEvent = async (req: Request, res: Response) => {
@@ -8,6 +8,7 @@ export const addEvent = async (req: Request, res: Response) => {
     customerId,
     customerName,
     customerEmail,
+    mobileNumber,
     purchaseAmount,
     purchaseDate,
   } = req.body;
@@ -18,6 +19,7 @@ export const addEvent = async (req: Request, res: Response) => {
     purchaseAmount === undefined ||
     customerName === undefined ||
     customerEmail === undefined ||
+    mobileNumber === undefined ||
     purchaseDate === undefined
   ) {
     return res
@@ -29,6 +31,7 @@ export const addEvent = async (req: Request, res: Response) => {
     customerId,
     customerName,
     customerEmail,
+    mobileNumber,
     purchaseAmount,
     purchaseDate,
   };
@@ -45,11 +48,11 @@ export const addEvent = async (req: Request, res: Response) => {
 // Controller to handle customer-related requests
 export const customerController = {
   // Method to find a customer by email
-  getCustomerByEmail: async (req: Request, res: Response): Promise<void> => {
-    const { email } = req.params; // Extract email from request parameters
+  getCustomerByMobile: async (req: Request, res: Response): Promise<void> => {
+    const { mobileNumber } = req.params; // Extract email from request parameters
 
     try {
-      const customerDetails = await findCustomerByEmail(email);
+      const customerDetails = await findCustomerByMobile(BigInt(mobileNumber)); // Call the service function
 
       if (customerDetails) {
         res.status(200).json(customerDetails); // Send response without returning
