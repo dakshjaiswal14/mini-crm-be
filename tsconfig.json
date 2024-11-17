@@ -9,13 +9,14 @@
     /* Module Resolution */
     "esModuleInterop": true,                         /* Enable ES6 module interoperability for CommonJS. */
     "resolveJsonModule": true,                       /* Allow importing JSON files. */
-    // "types": ["node", "express"],                    /* Include Node.js and Express type definitions. */
+     "types": ["node", "express"],                    /* Include Node.js and Express type definitions. */
      "typeRoots": [
       "./node_modules/@types",
       "./src/types"],
 
     /* Strict Type Checking */
-    "strict": true,                                  /* Enable all strict type-checking options. */
+    "strict": true,       
+    "noImplicitAny": true,                           /* Enable all strict type-checking options. */
     "forceConsistentCasingInFileNames": true,        /* Enforce consistent casing in file names. */
     "skipLibCheck": true,                            /* Skip checking .d.ts files. */
 
@@ -31,7 +32,6 @@
     "src/**/*"                                       /* Include all TypeScript files in the src folder. */
   ],
   "exclude": [
-    "node_modules",                                  /* Exclude node_modules to avoid redundant type checking. */
-    "dist"                                          /* Exclude output directory. */
+    "node_modules",                                  /* Exclude node_modules to avoid redundant type checking. */                                          /* Exclude output directory. */
   ]
 }
