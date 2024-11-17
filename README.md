@@ -1,4 +1,4 @@
-# Mini CRM Backend
+# Mini CRM Backend (Please switch to master branch for source code)
 
 Welcome to the backend repository for the Mini CRM & Campaign Management App! This project was developed as part of the Xeno SDE Internship assignment. The backend provides APIs for customer data ingestion, audience segmentation, campaign management, and message delivery with a focus on scalability and efficiency.
 
