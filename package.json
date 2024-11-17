@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/server.ts",
-    "build":"tsc"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "express": "^4.21.1",
     "ioredis": "^5.4.1",
     "mysql2": "^3.11.4",
+    "node": "^18.20.5",
     "svix": "^1.40.0",
     "typeorm": "^0.3.20"
   },
