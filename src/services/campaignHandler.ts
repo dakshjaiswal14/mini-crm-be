@@ -144,18 +144,18 @@ export const getCampaignStatsById = async (campaignId: string) => {
 // Function to get delivery receipt by campaign ID and  email
 export const getDeliveryReceipt = async (
   campaignId: number,
-  user_email?: string
+  mobileNumber?: bigint
 ) => {
   const connection = await getMySQLConnection();
 
   try {
     const customerQuery = `
         SELECT id FROM customers
-        WHERE email = ?;
+        WHERE mobile_number = ?;
       `;
     const [customerRows] = await connection.execute<RowDataPacket[]>(
       customerQuery,
-      [user_email]
+      [mobileNumber]
     );
 
     // Check if the customer exists

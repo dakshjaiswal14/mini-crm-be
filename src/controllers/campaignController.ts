@@ -75,12 +75,13 @@ export const deliveryReceiptController = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const { campaignId, userEmail } = req.body; // Extract campaignId and userId from request body
+  const { campaignId, mobileNumber } = req.body; // Extract campaignId and userId from request body
 
   // Validate that both campaignId and userId are provided
-  if (!campaignId || !userEmail) {
+  if (!campaignId || !mobileNumber) {
     res.status(400).json({
-      message: "Both campaignId and userMail are required in the request body.",
+      message:
+        "Both campaignId and mobileNumber are required in the request body.",
     });
     return;
   }
@@ -89,7 +90,7 @@ export const deliveryReceiptController = async (
     // Call the function to get the delivery receipt
     const receipt = await getDeliveryReceipt(
       Number(campaignId),
-      userEmail as string
+      mobileNumber as bigint
     );
 
     // Send the receipt back as JSON
